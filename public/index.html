@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pickupzz</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <header>
+    <h1>Pickupzz</h1>
+    <p>Generate, search, and save your favorite pickup lines.</p>
+  </header>
+
+  <main>
+    <section class="panel">
+      <h2>Generator</h2>
+      <div class="row">
+        <select id="categorySelect">
+          <option value="">Any category</option>
+          <option value="funny">Funny</option>
+          <option value="romantic">Romantic</option>
+          <option value="nerdy">Nerdy</option>
+          <option value="cheesy">Cheesy</option>
+        </select>
+        <button id="generateBtn">Generate line</button>
+      </div>
+      <article id="generatedCard" class="card"></article>
+    </section>
+
+    <section class="panel">
+      <h2>Search</h2>
+      <div class="row">
+        <input id="searchInput" type="text" placeholder="Search by keyword or category" />
+        <button id="searchBtn">Search</button>
+      </div>
+      <ul id="searchResults"></ul>
+    </section>
+
+    <section class="panel">
+      <h2>Submit your line</h2>
+      <div class="column">
+        <input id="submitText" type="text" placeholder="Your pickup line" />
+        <input id="submitCategory" type="text" placeholder="Category (optional)" />
+        <button id="submitBtn">Submit</button>
+      </div>
+      <p id="submitMessage" class="muted"></p>
+    </section>
+
+    <section class="panel">
+      <h2>Favorites</h2>
+      <ul id="favoritesList"></ul>
+    </section>
+  </main>
+
+  <script src="/app.js"></script>
+</body>
+</html>

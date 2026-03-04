@@ -1,8 +1,39 @@
 # Pickupzz
 
-Pickupzz is a web app for generating and discovering pickup lines with fast search, category filtering, AI-assisted generation, and user submissions.
+Pickupzz is a web app for generating and discovering pickup lines with fast search, category filtering, lightweight AI-style content seeding, and user submissions.
 
-## 1) Core idea
+## Quick start
+
+```bash
+node server.js
+```
+
+Open `http://localhost:3000`.
+
+## Included MVP code
+
+This repo now includes a runnable MVP implementation with:
+
+- Static frontend in `public/`
+- HTTP API server in `server.js`
+- Seed pickup line data in `data/pickupLines.js`
+- Basic API tests in `test/api.test.js`
+
+### API endpoints
+
+```http
+GET  /api/generate?category=
+GET  /api/category/:name
+GET  /api/search?q=
+POST /api/submit
+POST /api/favorite
+GET  /api/trending
+POST /api/reset
+```
+
+---
+
+## Product blueprint (original planning notes)
 
 Pickupzz generates pickup lines from:
 
@@ -87,17 +118,6 @@ Core responsibilities:
 - User accounts
 - Favorites
 
-Example endpoints:
-
-```http
-GET /api/generate
-GET /api/category/:name
-GET /api/search?q=
-POST /api/submit
-POST /api/favorite
-GET /api/trending
-```
-
 ## 6) Database design
 
 ### `pickup_lines`
@@ -124,174 +144,3 @@ GET /api/trending
 
 - `user_id`
 - `pickup_line_id`
-
-## 7) Future scaling strategy
-
-To grow toward very large datasets:
-
-- Sharded databases
-- Partitioning by category
-- Distributed indexing
-
-Example shard families:
-
-- Funny cluster
-- Romantic cluster
-- Nerdy cluster
-- Anime cluster
-
-## 8) Search system
-
-Suggested engines:
-
-- Elasticsearch
-- OpenSearch
-- Meilisearch
-
-Search behavior:
-
-- Keyword search
-- Category filters
-- Popularity ranking
-
-## 9) Caching layer
-
-Use Redis for:
-
-- Random pickup lines
-- Trending lines
-- Popular categories
-- Search responses
-
-Recommended cache TTL: `10 minutes`.
-
-## 10) AI generator
-
-Generate new lines dynamically when needed.
-
-Example input:
-
-```text
-Category: Nerdy
-Theme: Programming
-Tone: Funny
-```
-
-Example output:
-
-```text
-"Are you a Git commit? Because you just changed my history."
-```
-
-Model options:
-
-- Local LLM
-- OpenAI API
-- Fine-tuned generator
-
-## 11) Growth phases
-
-### Phase 1 (0–100k users)
-
-- Single server
-- PostgreSQL
-- Redis
-- CDN
-
-### Phase 2 (1M users)
-
-- Load balancer
-- Multiple API servers
-- Search cluster
-- DB replication
-
-### Phase 3 (10M+ users)
-
-- Microservices
-- Data sharding
-- Edge caching
-- Event streaming
-
-## 12) Request flow
-
-```text
-User clicks Generate
-     ↓
-API checks Redis cache
-     ↓
-If cache miss → Query database
-     ↓
-If results are insufficient → AI generates new ones
-     ↓
-Store + return to user
-```
-
-## 13) Trending formula
-
-```text
-score = likes + shares + search frequency
-```
-
-Recalculation interval: every `5 minutes`.
-
-## 14) Deployment plan
-
-- Frontend: Vercel / Netlify
-- Backend: AWS / GCP / DigitalOcean
-- Database: Managed PostgreSQL
-- Search: OpenSearch cluster
-- Cache: Managed Redis
-- Storage: Object storage for logs
-
-## 15) Startup cost estimate
-
-Approximate starter budget: **$20–$80/month**.
-
-Example split:
-
-- Server: $20
-- Database: $15
-- Redis: $10
-- Domain + CDN: $10
-
-## 16) Suggested repository layout
-
-```text
-pickupzz/
- ├ frontend/
- │   ├ pages/
- │   ├ components/
- │   ├ utils/
- │
- ├ backend/
- │   ├ routes/
- │   ├ controllers/
- │   ├ services/
- │   ├ models/
- │
- ├ ai-service/
- │   ├ generator.py
- │
- └ infra/
-     ├ docker/
-     ├ deployment/
-```
-
-## 17) Differentiators
-
-- AI-generated pickup lines
-- Category intelligence
-- Near-infinite generation feel
-- Developer API
-- Personalized suggestions
-
-## 18) Realistic launch target
-
-A practical launch can start with:
-
-- 100,000 pickup lines
-- 10 categories
-- A simple AI generator
-- Basic search
-
-This is enough to deliver an "infinite" user experience from day one.
