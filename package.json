@@ -1,0 +1,15 @@
+{
+  "name": "pickupzz",
+  "version": "0.1.0",
+  "description": "Pickupzz MVP app",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "test": "node --test"
+  },
+  "keywords": [
+    "pickup-lines"
+  ],
+  "license": "MIT"
+}
